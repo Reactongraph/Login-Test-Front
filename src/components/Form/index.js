@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Grid,
   Typography,
@@ -9,10 +9,10 @@ import {
   Button,
   CssBaseline,
   Paper,
-} from "@mui/material";
-import { LockOutlined } from "@mui/icons-material";
+} from '@mui/material';
+import { LockOutlined } from '@mui/icons-material';
 
-export class index extends Component {
+export class Index extends Component {
   constructor(props) {
     super();
   }
@@ -21,7 +21,7 @@ export class index extends Component {
     const { title, handleSubmit, buttonName, email, password, handleChange } =
       this.props;
     return (
-      <Grid container component="main" sx={{ height: "100vh" }}>
+      <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
         <Grid
           item
@@ -30,10 +30,10 @@ export class index extends Component {
           md={7}
           sx={{
             backgroundImage:
-              "url(https://images.unsplash.com/photo-1512568400610-62da28bc8a13?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8OXx8fGVufDB8fHx8&w=1000&q=80)",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
+              'url(https://images.unsplash.com/photo-1512568400610-62da28bc8a13?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8OXx8fGVufDB8fHx8&w=1000&q=80)',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
           }}
         />
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
@@ -41,12 +41,12 @@ export class index extends Component {
             sx={{
               my: 8,
               mx: 4,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
               <LockOutlined />
             </Avatar>
             <Typography component="h1" variant="h5">
@@ -92,11 +92,11 @@ export class index extends Component {
               >
                 {buttonName}
               </Button>
-              {title === "Sign In" ? (
+              {title === 'Sign In' ? (
                 <Grid container>
                   <Grid item>
                     <Link
-                      style={{ textDecoration: "none", color: "blue" }}
+                      style={{ textDecoration: 'none', color: 'blue' }}
                       to="/signup"
                     >
                       {"Don't have an account? Sign Up"}
@@ -107,10 +107,10 @@ export class index extends Component {
                 <Grid container>
                   <Grid item>
                     <Link
-                      style={{ textDecoration: "none", color: "blue" }}
+                      style={{ textDecoration: 'none', color: 'blue' }}
                       to="/"
                     >
-                      {"Already have an account. Sign In"}
+                      {'Already have an account. Sign In'}
                     </Link>
                   </Grid>
                 </Grid>
@@ -123,4 +123,4 @@ export class index extends Component {
   }
 }
 
-export default index;
+export default Index;

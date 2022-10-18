@@ -1,8 +1,8 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
-import { Login, Signup } from "./container";
-import Header from "./components/Header";
-import "./index.css";
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { Login, Signup } from './container';
+import Header from './components/Header/Index';
+import './index.css';
 
 function App() {
   return (

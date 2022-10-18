@@ -1,18 +1,22 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { loginThunk } from "./thunk";
+import { createSlice } from '@reduxjs/toolkit';
+import { loginThunk } from './thunk';
 
 export const initialState = {
   loading: false,
   isAuthenticated: false,
   user: {},
-  token: "",
-  error: "",
+  token: '',
+  error: {},
 };
 
 export const loginSlice = createSlice({
-  name: "loginState",
+  name: 'loginState',
   initialState,
-  reducers: {},
+  reducers: {
+    removeError(state) {
+      state.error = {};
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loginThunk.login.pending, (state) => ({
@@ -28,16 +32,18 @@ export const loginSlice = createSlice({
           isAuthenticated: true,
         };
       })
-      .addCase(loginThunk.login.rejected, (state, { payload }) => ({
-        ...state,
-        loading: false,
-        error: payload,
-      }))
+      .addCase(loginThunk.login.rejected, (state, payload) => {
+        return {
+          ...state,
+          loading: false,
+          error: payload.error,
+        };
+      })
       .addCase(loginThunk.logout.fulfilled, (state) => {
         return {
           ...state,
           loading: false,
-          token: "",
+          token: '',
           user: {},
           isAuthenticated: false,
         };
@@ -50,13 +56,14 @@ export const loginSlice = createSlice({
         return {
           ...state,
           loading: false,
-          user: payload.user,
+          user: payload,
+          error: {},
         };
       })
-      .addCase(loginThunk.signup.rejected, (state, { payload }) => ({
+      .addCase(loginThunk.signup.rejected, (state, payload) => ({
         ...state,
         loading: false,
-        error: payload,
+        error: payload.error,
       }));
   },
 });

@@ -1,18 +1,18 @@
-import React, { Component } from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
+import React, { Component } from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
 
-import { connect } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { connect } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 
-import { loginThunk } from "../../redux/pages";
+import { loginThunk } from '../../redux/pages';
 
-export class index extends Component {
+export class Index extends Component {
   constructor(props) {
     super();
 
@@ -23,7 +23,6 @@ export class index extends Component {
     this.setState({ redirect: true });
   };
   render() {
-    console.log(this.props);
     return (
       <Box sx={{ flexGrow: 1 }}>
         {this.state.redirect && <Navigate to="/" replace={true} />}
@@ -63,4 +62,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProp, mapDispatchToProps)(index);
+export default connect(mapStateToProp, mapDispatchToProps)(Index);
