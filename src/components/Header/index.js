@@ -13,15 +13,17 @@ import { Navigate } from 'react-router-dom';
 import { loginThunk } from '../../redux/pages';
 
 export class Index extends Component {
+
   constructor(props) {
     super();
-
     this.state = { redirect: false };
   }
+
   handleLogout = () => {
     this.props.logout();
     this.setState({ redirect: true });
   };
+
   render() {
     return (
       <Box sx={{ flexGrow: 1 }}>

@@ -6,6 +6,7 @@ import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import { Navigate } from 'react-router-dom';
 class Index extends Component {
+
   constructor(props) {
     super();
     this.state = {
@@ -15,19 +16,6 @@ class Index extends Component {
       redirect: false,
     };
   }
-  handleOpen = () => this.setState({ open: true });
-  handleClose = () => this.setState({ open: false });
-
-  handleChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({ ...this.state, [name]: value });
-  };
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-    const { email, password } = this.state;
-    this.props.signup({ email, password });
-  };
 
   componentDidUpdate() {
     const { error, user } = this.props.state.loginState;
@@ -40,6 +28,21 @@ class Index extends Component {
       this.setState({ ...this.state, redirect: true });
     }
   }
+
+  handleOpen = () => this.setState({ open: true });
+  handleClose = () => this.setState({ open: false });
+
+  handleChange = (event) => {
+    const { name, value } = event.target || {};
+    this.setState({ ...this.state, [name]: value });
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const { email, password } = this.state;
+    this.props.signup({ email, password });
+  };
+
   render() {
     const { error } = this.props.state.loginState;
     const { open, email, password, redirect } = this.state;
