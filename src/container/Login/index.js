@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Form from '../../components/Form/Index';
-import { loginSliceAction, loginThunk } from '../../redux/pages';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import { Navigate } from 'react-router-dom';
+import { loginSliceAction, loginThunk } from '../../redux/pages';
 
 class Index extends Component {
   constructor(props) {
@@ -16,6 +16,17 @@ class Index extends Component {
       open: false,
       redirect: false,
     };
+  }
+
+  componentDidUpdate() {
+    const { error, isAuthenticated } = this.props?.state?.loginState || {};
+    if (error?.code === 'ERR_BAD_REQUEST') {
+      this.handleOpen();
+      this.props.removeError();
+    }
+    if (isAuthenticated) {
+      this.setState({ ...this.state, redirect: true });
+    }
   }
 
   handleChange = (event) => {
@@ -31,16 +42,7 @@ class Index extends Component {
     const { email, password } = this.state;
     this.props.login({ email, password });
   };
-  componentDidUpdate() {
-    const { error, isAuthenticated } = this.props.state.loginState;
-    if (error?.code === 'ERR_BAD_REQUEST') {
-      this.handleOpen();
-      this.props.removeError();
-    }
-    if (isAuthenticated) {
-      this.setState({ ...this.state, redirect: true });
-    }
-  }
+
   render() {
     const { error } = this.props.state.loginState;
     const { open, email, password, redirect } = this.state;
